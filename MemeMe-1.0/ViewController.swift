@@ -28,9 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
 
-    @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
-    }
-    
     // Pick an image from Album
     @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
@@ -38,7 +35,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
     }
-    
+    // Pick an image from Camera
+    @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
     
     @IBAction func cancelAction(sender: UIBarButtonItem) {
     }
