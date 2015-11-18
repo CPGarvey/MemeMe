@@ -31,7 +31,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cGP-NX-7XH"/>
                                     <barButtonItem title="Album" id="73D-yg-UOp" userLabel="Album">
                                         <connections>
-                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="CEW-bv-eDS"/>
+                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" id="t5a-lc-hcy"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jM3-M4-LU6"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
@@ -23,12 +23,6 @@ class ViewController: UIViewController {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    
     // Hide the status bar during app use
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -37,8 +31,14 @@ class ViewController: UIViewController {
     @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
     }
     
-    @IBAction func pickImage(sender: UIBarButtonItem) {
+    // Pick an image from Album
+    @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
+    
     
     @IBAction func cancelAction(sender: UIBarButtonItem) {
     }
