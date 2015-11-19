@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -54,27 +55,40 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iID-7e-YoI">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="iID-7e-YoI" firstAttribute="top" secondItem="ptJ-Mx-mOK" secondAttribute="bottom" id="6DX-o0-LzJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JSI-PR-zJh" secondAttribute="trailing" constant="-20" id="Kla-LA-DLw"/>
+                            <constraint firstItem="iID-7e-YoI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="N61-12-otH"/>
                             <constraint firstItem="ptJ-Mx-mOK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ZyA-Rf-4Q6"/>
+                            <constraint firstItem="JSI-PR-zJh" firstAttribute="top" secondItem="iID-7e-YoI" secondAttribute="bottom" id="eUM-q2-erE"/>
                             <constraint firstItem="ptJ-Mx-mOK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="iA7-Gd-mq2"/>
                             <constraint firstItem="JSI-PR-zJh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="sR2-Y1-fG2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ptJ-Mx-mOK" secondAttribute="trailing" constant="-20" id="vGn-aw-DVU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iID-7e-YoI" secondAttribute="trailing" constant="-20" id="waK-ma-Oa1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JSI-PR-zJh" secondAttribute="bottom" id="xKV-c1-TM0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="JSI-PR-zJh"/>
                                 <exclude reference="ptJ-Mx-mOK"/>
+                                <exclude reference="iID-7e-YoI"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="ZyA-Rf-4Q6"/>
                                 <exclude reference="iA7-Gd-mq2"/>
                                 <exclude reference="vGn-aw-DVU"/>
+                                <exclude reference="6DX-o0-LzJ"/>
+                                <exclude reference="N61-12-otH"/>
+                                <exclude reference="waK-ma-Oa1"/>
                                 <exclude reference="Kla-LA-DLw"/>
+                                <exclude reference="eUM-q2-erE"/>
                                 <exclude reference="sR2-Y1-fG2"/>
                                 <exclude reference="xKV-c1-TM0"/>
                             </mask>
@@ -83,12 +97,17 @@
                             <mask key="subviews">
                                 <include reference="JSI-PR-zJh"/>
                                 <include reference="ptJ-Mx-mOK"/>
+                                <include reference="iID-7e-YoI"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="ZyA-Rf-4Q6"/>
                                 <include reference="iA7-Gd-mq2"/>
                                 <include reference="vGn-aw-DVU"/>
+                                <include reference="6DX-o0-LzJ"/>
+                                <include reference="N61-12-otH"/>
+                                <include reference="waK-ma-Oa1"/>
                                 <include reference="Kla-LA-DLw"/>
+                                <include reference="eUM-q2-erE"/>
                                 <include reference="sR2-Y1-fG2"/>
                                 <include reference="xKV-c1-TM0"/>
                             </mask>
@@ -97,10 +116,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cameraButton" destination="pvD-gD-Sad" id="j21-E9-avt"/>
+                        <outlet property="imagePickerView" destination="iID-7e-YoI" id="YmU-XT-uvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="652.5" y="443"/>
         </scene>
     </scenes>
 </document>
