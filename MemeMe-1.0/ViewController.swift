@@ -8,14 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imagePickerView: UIImageView!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
     
+    // Dictionary of default text attributes for the text fields
+    let memeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.blackColor(),
+        NSForegroundColorAttributeName : UIColor.whiteColor(),
+        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName : 3.0
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+    
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -30,6 +51,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
 
+    // UITextFieldDelegate method that clears the text when user first starts editing the text fields
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
+        }
+    }
+    
+    
     // Pick an image from Album
     @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
