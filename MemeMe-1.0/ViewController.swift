@@ -26,15 +26,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Create default text
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         
+        // Assign delegates
         topTextField.delegate = self
         bottomTextField.delegate = self
         
+        // Set text attributes
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
     
+        // Center-align text
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
     }
@@ -44,14 +48,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Disable camera if device does not have a camera
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+    
+        subscribeToKeyboardNotifications()
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    
     // Hide the status bar during app use
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
 
-    // UITextFieldDelegate method that clears the text when user first starts editing the text fields
+    // UITextFieldDelegate method to clear the text when user first starts editing the text fields
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField.text == "TOP" || textField.text == "BOTTOM" {
             textField.text = ""
@@ -88,6 +100,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func shareMeme(sender: UIBarButtonItem) {
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.CGRectValue().height
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
 }
