@@ -15,16 +15,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
-    // Dictionary of default text attributes for the text fields
+    
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: 3.0
+        NSStrokeWidthAttributeName: -3.0
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        // Dictionary of default text attributes for the text fields
+        
         
         // Create default text
         topTextField.text = "TOP"
@@ -37,10 +40,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Set text attributes
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
-    
+        
         // Center-align text
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
+        
     }
     
     override func viewWillAppear(animated: Bool) {
