@@ -105,6 +105,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func shareMeme(sender: UIBarButtonItem) {
+        let image = UIImage()
+        let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        presentViewController(nextController, animated: true, completion: nil)
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
