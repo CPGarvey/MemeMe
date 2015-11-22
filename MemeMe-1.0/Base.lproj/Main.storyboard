@@ -150,9 +150,11 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomTextField" destination="Obo-mU-gEs" id="SUh-uk-mud"/>
+                        <outlet property="bottomToolbar" destination="JSI-PR-zJh" id="vnh-Vt-gNe"/>
                         <outlet property="cameraButton" destination="pvD-gD-Sad" id="j21-E9-avt"/>
                         <outlet property="imagePickerView" destination="iID-7e-YoI" id="YmU-XT-uvh"/>
                         <outlet property="topTextField" destination="zhl-Kh-soM" id="1Wb-CI-AFe"/>
+                        <outlet property="topToolbar" destination="ptJ-Mx-mOK" id="6ep-63-YHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

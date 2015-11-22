@@ -14,8 +14,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     
     
+    // Dictionary of default text attributes for the text fields
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
@@ -25,9 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        // Dictionary of default text attributes for the text fields
-        
         
         // Create default text
         topTextField.text = "TOP"
@@ -109,10 +109,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func shareMeme(sender: UIBarButtonItem) {
-        let image = UIImage()
-        let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        let memedImage = generateMemedImage()
+        let nextController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         presentViewController(nextController, animated: true, completion: nil)
     }
+    
+    // save the meme
+    func save() {
+        let memedImage = generateMemedImage()
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
+    }
+    
+    
+    // Generate the image for the meme
+    func generateMemedImage() -> UIImage {
+        
+        // Hide toolbars
+        topToolbar.hidden = true
+        bottomToolbar.hidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Show toolbars
+        topToolbar.hidden = false
+        bottomToolbar.hidden = false
+        
+        
+        return memedImage
+    }
+    
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
