@@ -16,6 +16,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
     
     
     // Dictionary of default text attributes for the text fields
@@ -45,6 +47,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
         
+        // Disable the share button at start
+        shareButton.enabled = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,6 +63,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        
         unsubscribeFromKeyboardNotifications()
     }
     
@@ -101,23 +107,42 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             if let image = info[UIImagePickerControllerOriginalImage]as? UIImage {
                 self.imagePickerView.image = image
+                shareButton.enabled = true
             }
             self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancelAction(sender: UIBarButtonItem) {
+        // Disable the share button again
+        shareButton.enabled = false
+        // Return the text to the original
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        // Clear the image view
+        imagePickerView.image = nil
     }
     
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         let memedImage = generateMemedImage()
         let nextController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         presentViewController(nextController, animated: true, completion: nil)
+        
+        nextController.completionWithItemsHandler = { (activity, success, items, error) in
+            if success {
+                self.save()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
     }
     
-    // save the meme
+    // Save the meme
     func save() {
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
+    
+        /* not sure what else we're supposed to do in this method according to the instructions for this 1.0 project... are we supposed to do something with
+        the meme object that is created? Is it supposed to be "saved" somewhere? If so, where and how?
+        */
     }
     
     
