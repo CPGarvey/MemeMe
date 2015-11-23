@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSI-PR-zJh" userLabel="Bottom Toolbar">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <animations/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vWK-W6-zzV"/>
@@ -108,16 +108,16 @@
                                 <exclude reference="MJp-jU-fCV"/>
                                 <exclude reference="Mfl-YE-l97"/>
                                 <exclude reference="ucA-mG-pLk"/>
-                                <exclude reference="JM7-wL-Cvs"/>
-                                <exclude reference="Kla-LA-DLw"/>
-                                <exclude reference="eUM-q2-erE"/>
-                                <exclude reference="sR2-Y1-fG2"/>
                                 <exclude reference="ZyA-Rf-4Q6"/>
                                 <exclude reference="iA7-Gd-mq2"/>
                                 <exclude reference="vGn-aw-DVU"/>
                                 <exclude reference="6DX-o0-LzJ"/>
                                 <exclude reference="N61-12-otH"/>
                                 <exclude reference="waK-ma-Oa1"/>
+                                <exclude reference="JM7-wL-Cvs"/>
+                                <exclude reference="Kla-LA-DLw"/>
+                                <exclude reference="eUM-q2-erE"/>
+                                <exclude reference="sR2-Y1-fG2"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -135,16 +135,16 @@
                                 <include reference="MJp-jU-fCV"/>
                                 <include reference="Mfl-YE-l97"/>
                                 <include reference="ucA-mG-pLk"/>
-                                <include reference="JM7-wL-Cvs"/>
-                                <include reference="Kla-LA-DLw"/>
-                                <include reference="eUM-q2-erE"/>
-                                <include reference="sR2-Y1-fG2"/>
                                 <include reference="ZyA-Rf-4Q6"/>
                                 <include reference="iA7-Gd-mq2"/>
                                 <include reference="vGn-aw-DVU"/>
                                 <include reference="6DX-o0-LzJ"/>
                                 <include reference="N61-12-otH"/>
                                 <include reference="waK-ma-Oa1"/>
+                                <include reference="JM7-wL-Cvs"/>
+                                <include reference="Kla-LA-DLw"/>
+                                <include reference="eUM-q2-erE"/>
+                                <include reference="sR2-Y1-fG2"/>
                             </mask>
                         </variation>
                     </view>
@@ -161,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652.5" y="443"/>
+            <point key="canvasLocation" x="652" y="443"/>
         </scene>
     </scenes>
 </document>

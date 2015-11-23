@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: -3.0
+        NSStrokeWidthAttributeName: -3.0 // citation: Udacity forum
     ]
     
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    // Hide the status bar during app use
+    // Hide the status bar during app use - citation: http://stackoverflow.com/questions/24236912/how-do-i-hide-the-status-bar-in-a-swift-ios-app
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -126,6 +126,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let nextController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         presentViewController(nextController, animated: true, completion: nil)
         
+        // citation (lines 130-134): Udacity forum
         nextController.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
                 self.save()
