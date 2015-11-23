@@ -17,5 +17,5 @@ struct Meme {
     let image: UIImage
     let memedImage: UIImage
     
-    // no need for explicit initializer, membership initializer able to be used instead
+    // I think no need for explicit initializer because a "membership initializer" is able to be used instead?
 }

@@ -18,8 +18,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
-    
-    
     // Dictionary of default text attributes for the text fields
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
@@ -67,7 +65,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    
     // Hide the status bar during app use
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -112,16 +109,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // Reset image and text if user presses the Cancel button
     @IBAction func cancelAction(sender: UIBarButtonItem) {
         // Disable the share button again
         shareButton.enabled = false
-        // Return the text to the original
+        // Return the text to the original default
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         // Clear the image view
         imagePickerView.image = nil
     }
     
+    // Share the meme through the activity view controller when the share button is pressed
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         let memedImage = generateMemedImage()
         let nextController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
@@ -145,7 +144,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         */
     }
     
-    
     // Generate the image for the meme
     func generateMemedImage() -> UIImage {
         
@@ -163,7 +161,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topToolbar.hidden = false
         bottomToolbar.hidden = false
         
-        
         return memedImage
     }
     
@@ -174,12 +171,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.CGRectValue().height
     }
     
+    // Shift the view up if user entering text in bottom text field
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() == true {
         view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
+    // Shift the view back down if user finished entering text in bottom text field
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextField.isFirstResponder() == true {
         view.frame.origin.y += getKeyboardHeight(notification)
@@ -197,4 +196,3 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
 }
-
