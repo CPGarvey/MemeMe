@@ -29,27 +29,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
-        // Create default text
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        
-        // Assign delegates
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        
-        // Set text attributes
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        
-        // Center-align text
-        topTextField.textAlignment = .Center
-        bottomTextField.textAlignment = .Center
-        
-        // Disable the share button at start
-        shareButton.enabled = false
-        */
-        
         resetView(topTextField, initialText: "TOP", attributes: memeTextAttributes, alignment: .Center)
         resetView(bottomTextField, initialText: "BOTTOM", attributes: memeTextAttributes, alignment: .Center)
         
@@ -139,7 +118,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func save() {
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
-    
     }
     
     // Generate the image for the meme
@@ -161,7 +139,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         return memedImage
     }
-    
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
@@ -193,7 +170,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    // Add a method to reset the text fields when user loads the app or presses cancel (inspired by suggestion from code reviewer)
+    // Method to reset the text fields when user loads the app or presses cancel (inspired by suggestion from code reviewer)
     func resetView(textField: UITextField, initialText: String, attributes: [String : NSObject], alignment: NSTextAlignment) {
         textField.text = initialText
         textField.delegate = self
