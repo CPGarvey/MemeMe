@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  MemeMe-1.0
+//  MemeEditorViewController.swift
+//  MemeMe-2.0
 //
 //  Created by Chris Garvey on 11/17/15.
 //  Copyright © 2015 Chris Garvey. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -29,6 +29,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         // Create default text
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
@@ -47,6 +48,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Disable the share button at start
         shareButton.enabled = false
+        */
+        
+        resetView(topTextField, initialText: "TOP", attributes: memeTextAttributes, alignment: .Center)
+        resetView(bottomTextField, initialText: "BOTTOM", attributes: memeTextAttributes, alignment: .Center)
         
     }
     
@@ -196,4 +201,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    func resetView(textField: UITextField, initialText: String, attributes: [String : NSObject], alignment: NSTextAlignment) {
+        textField.text = initialText
+        textField.delegate = self
+        textField.defaultTextAttributes = attributes
+        textField.textAlignment = alignment
+        
+        shareButton.enabled = false
+    }
 }

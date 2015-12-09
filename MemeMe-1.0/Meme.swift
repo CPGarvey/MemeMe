@@ -1,6 +1,6 @@
 //
 //  Meme.swift
-//  MemeMe-1.0
+//  MemeMe-2.0
 //
 //  Created by Chris Garvey on 11/22/15.
 //  Copyright © 2015 Chris Garvey. All rights reserved.
