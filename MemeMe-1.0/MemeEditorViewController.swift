@@ -101,28 +101,23 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     // UIImagePickerControllerDelegate method that sends the selected image to the image view
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             if let image = info[UIImagePickerControllerOriginalImage]as? UIImage {
-                self.imagePickerView.image = image
+                imagePickerView.image = image
                 shareButton.enabled = true
             }
-            self.dismissViewControllerAnimated(true, completion: nil)
+            dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Reset image and text if user presses the Cancel button
     @IBAction func cancelAction(sender: UIBarButtonItem) {
-        // Disable the share button again
-        shareButton.enabled = false
-        // Return the text to the original default
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        // Clear the image view
-        imagePickerView.image = nil
+        resetView(topTextField, initialText: "TOP", attributes: memeTextAttributes, alignment: .Center)
+        resetView(bottomTextField, initialText: "BOTTOM", attributes: memeTextAttributes, alignment: .Center)
     }
     
     // Share the meme through the activity view controller when the share button is pressed
@@ -145,9 +140,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
     
-        /* not sure what else we're supposed to do in this method according to the instructions for this 1.0 project... are we supposed to do something with
-        the meme object that is created? Is it supposed to be "saved" somewhere? If so, where and how?
-        */
     }
     
     // Generate the image for the meme
@@ -158,8 +150,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomToolbar.hidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -201,6 +193,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    // Add a method to reset the text fields when user loads the app or presses cancel (inspired by suggestion from code reviewer)
     func resetView(textField: UITextField, initialText: String, attributes: [String : NSObject], alignment: NSTextAlignment) {
         textField.text = initialText
         textField.delegate = self
@@ -208,5 +201,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textField.textAlignment = alignment
         
         shareButton.enabled = false
+        imagePickerView.image = nil
     }
 }
