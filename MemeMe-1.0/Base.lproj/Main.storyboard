@@ -64,7 +64,13 @@
                             <outlet property="delegate" destination="Dvg-BA-rX2" id="nLu-zD-dZ4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="0cg-kI-U5o"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="0cg-kI-U5o">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GDZ-KL-fw0">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="FXI-07-SE4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1A-Uz-izG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -117,7 +123,13 @@
                             <outlet property="delegate" destination="pWA-SX-MqE" id="QTo-tH-Q9z"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="ox4-EX-olm"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="ox4-EX-olm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dtp-JN-kmD">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="SvV-2j-KRv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8m-z8-04n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,11 +283,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-229" y="1547"/>
+            <point key="canvasLocation" x="1296" y="531"/>
         </scene>
     </scenes>
     <resources>
         <image name="collectionIcon" width="30" height="30"/>
         <image name="tableIcon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FXI-07-SE4"/>
+    </inferredMetricsTieBreakers>
 </document>
