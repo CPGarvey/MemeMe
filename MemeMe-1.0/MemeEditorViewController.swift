@@ -95,8 +95,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // Reset image and text if user presses the Cancel button
     @IBAction func cancelAction(sender: UIBarButtonItem) {
-        resetView(topTextField, initialText: "TOP", attributes: memeTextAttributes, alignment: .Center)
-        resetView(bottomTextField, initialText: "BOTTOM", attributes: memeTextAttributes, alignment: .Center)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Share the meme through the activity view controller when the share button is pressed
@@ -118,6 +117,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func save() {
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        print(appDelegate.memes)
     }
     
     // Generate the image for the meme
