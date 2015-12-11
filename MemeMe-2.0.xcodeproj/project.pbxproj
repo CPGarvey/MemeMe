@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F22D749B1C1AA16C001D29DD /* SentMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D749A1C1AA16C001D29DD /* SentMemesTableViewController.swift */; };
 		F29E7F451C0245B200FFBFC0 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29E7F441C0245B200FFBFC0 /* Meme.swift */; };
 		F2B36BAC1BFB804100A0AAEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B36BAB1BFB804100A0AAEE /* AppDelegate.swift */; };
 		F2B36BAE1BFB804100A0AAEE /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B36BAD1BFB804100A0AAEE /* MemeEditorViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F22D749A1C1AA16C001D29DD /* SentMemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewController.swift; sourceTree = "<group>"; };
 		F29E7F441C0245B200FFBFC0 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		F2B36BA81BFB804100A0AAEE /* MemeMe-2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MemeMe-2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B36BAB1BFB804100A0AAEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				F2B36BAB1BFB804100A0AAEE /* AppDelegate.swift */,
 				F2B36BAD1BFB804100A0AAEE /* MemeEditorViewController.swift */,
+				F22D749A1C1AA16C001D29DD /* SentMemesTableViewController.swift */,
 				F29E7F441C0245B200FFBFC0 /* Meme.swift */,
 				F2B36BAF1BFB804100A0AAEE /* Main.storyboard */,
 				F2B36BB21BFB804100A0AAEE /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F29E7F451C0245B200FFBFC0 /* Meme.swift in Sources */,
+				F22D749B1C1AA16C001D29DD /* SentMemesTableViewController.swift in Sources */,
 				F2B36BAE1BFB804100A0AAEE /* MemeEditorViewController.swift in Sources */,
 				F2B36BAC1BFB804100A0AAEE /* AppDelegate.swift in Sources */,
 			);
