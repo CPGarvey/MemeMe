@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-935" y="407"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Sent Memes Table Navigation Controller-->
         <scene sceneID="ZKt-wc-z1P">
             <objects>
-                <navigationController id="OPK-Z4-hdX" sceneMemberID="viewController">
+                <navigationController id="OPK-Z4-hdX" userLabel="Sent Memes Table Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="tableIcon" id="YpZ-SR-4Av"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NKv-hU-Hvb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="-229" y="77"/>
         </scene>
-        <!--Sent Memes-->
+        <!--Sent Memes Table View Controller-->
         <scene sceneID="SQ8-Xf-3wk">
             <objects>
-                <tableViewController storyboardIdentifier="SentMemesTable" id="Dvg-BA-rX2" customClass="SentMemesTableViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SentMemesTable" id="Dvg-BA-rX2" userLabel="Sent Memes Table View Controller" customClass="SentMemesTableViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="B58-Wi-TYf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="573" y="77"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Sent Memes Collection Navigation Controller-->
         <scene sceneID="G7T-Rd-a5I">
             <objects>
-                <navigationController id="qjn-Wa-KqC" sceneMemberID="viewController">
+                <navigationController id="qjn-Wa-KqC" userLabel="Sent Memes Collection Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="collectionIcon" id="HVb-V4-B1x"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mh7-7C-RgB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -102,29 +102,37 @@
             </objects>
             <point key="canvasLocation" x="-229" y="834"/>
         </scene>
-        <!--Sent Memes-->
+        <!--Sent Memes Collection View Controller-->
         <scene sceneID="zwZ-jf-J2j">
             <objects>
-                <collectionViewController id="pWA-SX-MqE" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="SentMemesCollection" id="pWA-SX-MqE" userLabel="Sent Memes Collection View Controller" customClass="SentMemesCollectionViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="yJv-Lp-hav">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8UY-BD-Wd1">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="162" height="126"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SRC-BU-3e8">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SentMemesCollectionViewCell" id="SRC-BU-3e8" customClass="SentMemesCollectionViewCell" customModule="MemeMe_2_0" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="162" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="162" height="126"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wYJ-Sx-A7W">
+                                            <rect key="frame" x="8" y="8" width="146" height="110"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="sentMemesImageView" destination="wYJ-Sx-A7W" id="tTz-u0-isN"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -139,6 +147,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="8UY-BD-Wd1" id="wvz-MH-VPK"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8m-z8-04n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -300,6 +311,6 @@
         <image name="tableIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FXI-07-SE4"/>
+        <segue reference="SvV-2j-KRv"/>
     </inferredMetricsTieBreakers>
 </document>
