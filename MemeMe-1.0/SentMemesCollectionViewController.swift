@@ -36,7 +36,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         let space: CGFloat = 3.0
         let dimension = (self.view.frame.size.width - (2 * space)) / space
-        print(dimension)
+        
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
@@ -80,7 +80,13 @@ class SentMemesCollectionViewController: UICollectionViewController {
         return true
     }
     */
-
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+            detailController.meme = memes[indexPath.row]
+            self.navigationController!.pushViewController(detailController, animated: true)
+    }
+    
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {

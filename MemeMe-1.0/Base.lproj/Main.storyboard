@@ -155,6 +155,38 @@
             </objects>
             <point key="canvasLocation" x="573" y="834"/>
         </scene>
+        <!--Meme Detail View-->
+        <scene sceneID="lRF-hf-UYW">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="Nda-TY-exi" userLabel="Meme Detail View" customClass="MemeDetailViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ETu-MA-LCA"/>
+                        <viewControllerLayoutGuide type="bottom" id="o3E-Kg-iUT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CDL-Ho-u0L">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NGD-3h-WTD">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NGD-3h-WTD" firstAttribute="top" secondItem="ETu-MA-LCA" secondAttribute="bottom" id="WeC-dj-Nx5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NGD-3h-WTD" secondAttribute="trailing" constant="-20" id="lV8-h4-kgA"/>
+                            <constraint firstItem="NGD-3h-WTD" firstAttribute="leading" secondItem="CDL-Ho-u0L" secondAttribute="leadingMargin" constant="-20" id="pi6-oc-6KO"/>
+                            <constraint firstItem="o3E-Kg-iUT" firstAttribute="top" secondItem="NGD-3h-WTD" secondAttribute="bottom" id="wrz-W4-772"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="NGD-3h-WTD" id="vMG-ys-30v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5V-r7-gqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="531"/>
+        </scene>
         <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
