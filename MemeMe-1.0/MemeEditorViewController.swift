@@ -131,7 +131,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Hide toolbars
         topToolbar.hidden = true
         bottomToolbar.hidden = true
-        
+                
         // Render view to an image
         UIGraphicsBeginImageContext(view.frame.size)
         view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
