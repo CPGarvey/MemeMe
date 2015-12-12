@@ -24,9 +24,11 @@ class SentMemesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    // citation: https://discussions.udacity.com/t/cant-get-table-view-to-work-doesnt-display-any-cells/34898
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.hidden = false
+        // citation: https://discussions.udacity.com/t/cant-get-table-view-to-work-doesnt-display-any-cells/34898
         tableView.reloadData()
     }
     
@@ -39,7 +41,7 @@ class SentMemesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("memeCell", forIndexPath: indexPath)
         cell.imageView?.image = memes[indexPath.row].memedImage
-        cell.textLabel?.text = memes[indexPath.row].topText + memes[indexPath.row].bottomText
+        cell.textLabel?.text = memes[indexPath.row].topText + " " + memes[indexPath.row].bottomText
         return cell
     }
     

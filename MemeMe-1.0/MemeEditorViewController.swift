@@ -32,6 +32,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         resetView(topTextField, initialText: "TOP", attributes: memeTextAttributes, alignment: .Center)
         resetView(bottomTextField, initialText: "BOTTOM", attributes: memeTextAttributes, alignment: .Center)
         
+        // Add the selected meme here if you're going to edit an existing meme?
+        
     }
     
     override func viewWillAppear(animated: Bool) {
