@@ -21,7 +21,7 @@ class MemeDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Hide the tab bar
-        self.tabBarController?.tabBar.hidden = true
+        tabBarController?.tabBar.hidden = true
         
         // Add an "Edit" bar button to the navigation bar
         // Citation: https://www.hackingwithswift.com/example-code/uikit/how-to-add-a-bar-button-to-a-navigation-bar
@@ -32,7 +32,7 @@ class MemeDetailViewController: UIViewController {
     
     func editMeme() {
         var controller: MemeEditorViewController
-        controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        controller = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         
         // Set the location of the meme that will be edited
         controller.memeIndex = memeIndex

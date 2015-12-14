@@ -18,12 +18,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
-    // Dictionary of default text attributes for the text fields
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: -3.0 // citation: Udacity forum
+        NSStrokeWidthAttributeName: -3.0
     ]
     
     // Create variable to track if user is creating a new meme or editing an existing meme
@@ -40,14 +39,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Depending on whether user is creating a new meme or editing an existing meme, set the view accordingly
         if newMeme == true {
-            resetView(topTextField, initialText: "TOP")
-            resetView(bottomTextField, initialText: "BOTTOM")
+            setView(topTextField, initialText: "TOP")
+            setView(bottomTextField, initialText: "BOTTOM")
             shareButton.enabled = false
             imagePickerView.image = nil
         } else {
-            resetView(topTextField, initialText: memes[memeIndex].topText)
-            resetView(bottomTextField, initialText: memes[memeIndex].bottomText)
+            setView(topTextField, initialText: memes[memeIndex].topText)
+            setView(bottomTextField, initialText: memes[memeIndex].bottomText)
             shareButton.enabled = true
             imagePickerView.image = memes[memeIndex].image
         }
@@ -57,7 +57,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Disable camera if device does not have a camera
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     
         subscribeToKeyboardNotifications()
@@ -69,12 +68,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         unsubscribeFromKeyboardNotifications()
     }
     
-    // Hide the status bar during app use - citation: http://stackoverflow.com/questions/24236912/how-do-i-hide-the-status-bar-in-a-swift-ios-app
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
 
-    // UITextFieldDelegate method to clear the text when user first starts editing the text fields
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField.text == "TOP" || textField.text == "BOTTOM" {
             textField.text = ""
@@ -87,7 +84,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return true
     }
     
-    // Pick an image from Album
     @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -95,7 +91,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    // Pick an image from Camera
     @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -103,7 +98,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    // UIImagePickerControllerDelegate method that sends the selected image to the image view
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             if let image = info[UIImagePickerControllerOriginalImage]as? UIImage {
@@ -113,18 +107,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // Reset image and text if user presses the Cancel button
     @IBAction func cancelAction(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // Share the meme through the activity view controller when the share button is pressed
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         let memedImage = generateMemedImage()
         let nextController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         presentViewController(nextController, animated: true, completion: nil)
         
-        // citation (lines 130-134): Udacity forum
         nextController.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
                 self.save()
@@ -133,13 +124,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
-    // Save the meme
     func save() {
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
         
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
+        
+        // Depending on whether user is creating a new meme or editing an existing meme, save accordingly
         if newMeme == true {
             appDelegate.memes.append(meme)
         } else {
@@ -147,20 +139,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
-    // Generate the image for the meme
     func generateMemedImage() -> UIImage {
         
-        // Hide toolbars
         topToolbar.hidden = true
         bottomToolbar.hidden = true
-                
-        // Render view to an image
+        
         UIGraphicsBeginImageContext(view.frame.size)
         view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // Show toolbars
         topToolbar.hidden = false
         bottomToolbar.hidden = false
         
@@ -173,14 +161,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return keyboardSize.CGRectValue().height
     }
     
-    // Shift the view up if user entering text in bottom text field
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() == true {
         view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
-    // Shift the view back down if user finished entering text in bottom text field
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextField.isFirstResponder() == true {
         view.frame.origin.y += getKeyboardHeight(notification)
@@ -197,13 +183,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    // Method to reset the text fields when user loads the app or presses cancel (inspired by suggestion from code reviewer)
-    func resetView(textField: UITextField, initialText: String) {
+    // Method to set the text fields when user loads the app or presses cancel (inspired by suggestion from code reviewer)
+    func setView(textField: UITextField, initialText: String) {
         textField.text = initialText
         textField.delegate = self
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .Center
     }
-    
-    
+
 }
