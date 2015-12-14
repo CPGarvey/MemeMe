@@ -12,30 +12,34 @@ class MemeDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    var meme: Meme!
+    var memeIndex: Int!
+    var memes: [Meme] {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Hide the tab bar
         self.tabBarController?.tabBar.hidden = true
+        
+        // Add an "Edit" bar button to the navigation bar
+        // Citation: https://www.hackingwithswift.com/example-code/uikit/how-to-add-a-bar-button-to-a-navigation-bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: "editMeme")
+        
+        imageView!.image = memes[memeIndex].memedImage
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.imageView!.image = meme.memedImage
+    func editMeme() {
+        var controller: MemeEditorViewController
+        controller = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        
+        // Set the location of the meme that will be edited
+        controller.memeIndex = memeIndex
+        
+        // Set the property alerting the Meme Editor that this is not a new meme
+        controller.newMeme = false
+        
+        presentViewController(controller, animated: true, completion: nil)
     }
-
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

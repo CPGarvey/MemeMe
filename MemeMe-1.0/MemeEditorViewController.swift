@@ -26,13 +26,31 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSStrokeWidthAttributeName: -3.0 // citation: Udacity forum
     ]
     
+    // Create variable to track if user is creating a new meme or editing an existing meme
+    var newMeme: Bool?
+    
+    // Access the meme model if user is editing existing meme
+    var memes: [Meme] {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
+    
+    // Determine the meme being edited if user is editing existing meme
+    var memeIndex: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resetView(topTextField, initialText: "TOP", attributes: memeTextAttributes, alignment: .Center)
-        resetView(bottomTextField, initialText: "BOTTOM", attributes: memeTextAttributes, alignment: .Center)
-        
-        // Add the selected meme here if you're going to edit an existing meme?
+        if newMeme == true {
+            resetView(topTextField, initialText: "TOP")
+            resetView(bottomTextField, initialText: "BOTTOM")
+            shareButton.enabled = false
+            imagePickerView.image = nil
+        } else {
+            resetView(topTextField, initialText: memes[memeIndex].topText)
+            resetView(bottomTextField, initialText: memes[memeIndex].bottomText)
+            shareButton.enabled = true
+            imagePickerView.image = memes[memeIndex].image
+        }
         
     }
     
@@ -122,7 +140,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        if newMeme == true {
+            appDelegate.memes.append(meme)
+        } else {
+            appDelegate.memes[memeIndex] = meme
+        }
     }
     
     // Generate the image for the meme
@@ -176,13 +198,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // Method to reset the text fields when user loads the app or presses cancel (inspired by suggestion from code reviewer)
-    func resetView(textField: UITextField, initialText: String, attributes: [String : NSObject], alignment: NSTextAlignment) {
+    func resetView(textField: UITextField, initialText: String) {
         textField.text = initialText
         textField.delegate = self
-        textField.defaultTextAttributes = attributes
-        textField.textAlignment = alignment
-        
-        shareButton.enabled = false
-        imagePickerView.image = nil
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .Center
     }
+    
+    
 }

@@ -30,16 +30,11 @@ class SentMemesCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        // citation: https://discussions.udacity.com/t/my-uicollectionview-is-not-working-and-i-dont-know-why/14362/9
-        // Don't register because the reuse identifier has been entered via storyboard
-
-        // Do any additional setup after loading the view.
         let space: CGFloat = 3.0
         let dimension = (self.view.frame.size.width - (2 * space)) / space
-        
+                
         flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumLineSpacing = space + 1
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
     }
 
@@ -63,6 +58,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! SentMemesCollectionViewCell
         cell.sentMemesImageView?.image = memes[indexPath.row].memedImage
+        //cell.backgroundColor = UIColor.blackColor()
         return cell
     }
 
@@ -84,10 +80,17 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
-            detailController.meme = memes[indexPath.row]
-            self.navigationController!.pushViewController(detailController, animated: true)
+        //detailController.meme = memes[indexPath.row]
+        detailController.memeIndex = indexPath.row
+        self.navigationController!.pushViewController(detailController, animated: true)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "newMemeSegue" {
+            let controller = segue.destinationViewController as! MemeEditorViewController
+            controller.newMeme = true
+        }
+    }
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
