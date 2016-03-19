@@ -7,4 +7,4 @@
 
 ## Screenshots
 
-![alt text](Screenshots/InitialViewControllerIdle.png "Initial View Controller") ![alt text](Screenshots/MemeEditorViewControllerDefault.png "Meme Editor View Controller Default") ![alt text](Screenshots/MemeEditorViewControllerSample.png "Meme Editor View Controller Sample") ![alt text](Screenshots/SentMemesTableViewController.png "Sent Memes Table View Controller") ![alt text](Screenshots/SentMemesCollectionViewController.png "Sent Memes Collection View Controller")
+![alt text](Screenshots/InitialViewController.png "Initial View Controller") ![alt text](Screenshots/MemeEditorViewControllerDefault.png "Meme Editor View Controller Default") ![alt text](Screenshots/MemeEditorViewControllerSample.png "Meme Editor View Controller Sample") ![alt text](Screenshots/SentMemesTableViewController.png "Sent Memes Table View Controller") ![alt text](Screenshots/SentMemesCollectionViewController.png "Sent Memes Collection View Controller")
