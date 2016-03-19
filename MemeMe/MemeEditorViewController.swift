@@ -1,6 +1,6 @@
 //
 //  MemeEditorViewController.swift
-//  MemeMe-2.0
+//  MemeMe
 //
 //  Created by Chris Garvey on 11/17/15.
 //  Copyright © 2015 Chris Garvey. All rights reserved.
