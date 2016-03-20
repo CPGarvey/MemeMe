@@ -10,22 +10,29 @@ import UIKit
 
 class SentMemesTableViewController: UITableViewController {
    
+    // MARK: - Property
+    
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
     
+    
+    // MARK: - Lifecycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.hidden = false
-        // citation: https://discussions.udacity.com/t/cant-get-table-view-to-work-doesnt-display-any-cells/34898
+        /* Citation: https://discussions.udacity.com/t/cant-get-table-view-to-work-doesnt-display-any-cells/34898 */
         tableView.reloadData()
     }
+    
+    
+    // MARK: - Tableview Data Source Protocol Methods - Configuring Table View
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("memeCell", forIndexPath: indexPath)
         cell.imageView?.image = memes[indexPath.row].memedImage
@@ -33,21 +40,25 @@ class SentMemesTableViewController: UITableViewController {
         return cell
     }
     
-    // Override to support conditional editing of the table view.
+    
+    // MARK: - Tableview Data Source Protocol Methods - Inserting or Deleting Table Rows
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
 
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let object = UIApplication.sharedApplication().delegate
             let appDelegate = object as! AppDelegate
-            // citation: http://stackoverflow.com/questions/29294099/delete-a-row-in-table-view-in-swift
+            /* Citation: http://stackoverflow.com/questions/29294099/delete-a-row-in-table-view-in-swift */
             appDelegate.memes.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
     }
+    
+    
+    // MARK: - Tableview Delegate Method - Managing Selections
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
@@ -55,10 +66,13 @@ class SentMemesTableViewController: UITableViewController {
         navigationController!.pushViewController(detailController, animated: true)
     }
 
+    
+    // MARK: - Segue Method
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "newMemeSegue" {
             let controller = segue.destinationViewController as! MemeEditorViewController
-            // Set the newMeme property to true so the Meme Editor knows this is a new meme
+            /* Set the newMeme property to true so the Meme Editor knows this is a new meme */
             controller.newMeme = true
         }
     }

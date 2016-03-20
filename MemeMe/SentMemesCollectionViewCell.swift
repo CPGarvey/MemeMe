@@ -10,6 +10,7 @@ import UIKit
 
 class SentMemesCollectionViewCell: UICollectionViewCell {
     
+    /* Property to hold the image for the custom collection view cell */
     @IBOutlet weak var sentMemesImageView: UIImageView!
     
 }

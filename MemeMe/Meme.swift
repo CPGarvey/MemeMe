@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/* Meme Model */
 struct Meme {
     
     let topText: String

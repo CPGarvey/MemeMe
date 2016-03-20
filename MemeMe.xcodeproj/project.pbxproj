@@ -45,6 +45,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F22B46B61C9F2BA000168777 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F2B36BAD1BFB804100A0AAEE /* MemeEditorViewController.swift */,
+				F22D749A1C1AA16C001D29DD /* SentMemesTableViewController.swift */,
+				F22D749C1C1B6167001D29DD /* SentMemesCollectionViewController.swift */,
+				F22D74A41C1BB510001D29DD /* MemeDetailViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		F22B46B71C9F2BB000168777 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F22D74A21C1B69E9001D29DD /* SentMemesCollectionViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F22B46B81C9F2BB900168777 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F29E7F441C0245B200FFBFC0 /* Meme.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F2B36B9F1BFB804100A0AAEE = {
 			isa = PBXGroup;
 			children = (
@@ -65,18 +92,15 @@
 			isa = PBXGroup;
 			children = (
 				F2B36BAB1BFB804100A0AAEE /* AppDelegate.swift */,
-				F2B36BAD1BFB804100A0AAEE /* MemeEditorViewController.swift */,
-				F22D749A1C1AA16C001D29DD /* SentMemesTableViewController.swift */,
-				F22D749C1C1B6167001D29DD /* SentMemesCollectionViewController.swift */,
-				F22D74A21C1B69E9001D29DD /* SentMemesCollectionViewCell.swift */,
-				F22D74A41C1BB510001D29DD /* MemeDetailViewController.swift */,
-				F29E7F441C0245B200FFBFC0 /* Meme.swift */,
+				F22B46B81C9F2BB900168777 /* Model */,
+				F22B46B71C9F2BB000168777 /* View */,
+				F22B46B61C9F2BA000168777 /* Controller */,
 				F2B36BAF1BFB804100A0AAEE /* Main.storyboard */,
-				F2B36BB21BFB804100A0AAEE /* Assets.xcassets */,
-				F2B36BB41BFB804100A0AAEE /* LaunchScreen.storyboard */,
 				F2B36BB71BFB804100A0AAEE /* Info.plist */,
+				F2B36BB41BFB804100A0AAEE /* LaunchScreen.storyboard */,
+				F2B36BB21BFB804100A0AAEE /* Assets.xcassets */,
 			);
-			path = "MemeMe";
+			path = MemeMe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +119,7 @@
 			dependencies = (
 			);
 			name = MemeMe;
-			productName = "MemeMe";
+			productName = MemeMe;
 			productReference = F2B36BA81BFB804100A0AAEE /* MemeMe.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -268,9 +292,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "MemeMe/Info.plist";
+				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fantasy.MemeMe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fantasy.MemeMe;
 				PRODUCT_NAME = MemeMe;
 			};
 			name = Debug;
@@ -279,9 +303,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "MemeMe/Info.plist";
+				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fantasy.MemeMe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fantasy.MemeMe;
 				PRODUCT_NAME = MemeMe;
 			};
 			name = Release;
