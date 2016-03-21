@@ -17,7 +17,7 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     
-    // MARK: - Lifecycle
+    // MARK: - Life Cycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,7 +27,7 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     
-    // MARK: - Tableview Data Source Protocol Methods - Configuring Table View
+    // MARK: - Table View Data Source Protocol Methods - Configuring Table View
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
@@ -41,7 +41,7 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     
-    // MARK: - Tableview Data Source Protocol Methods - Inserting or Deleting Table Rows
+    // MARK: - Table View Data Source Protocol Methods - Inserting or Deleting Table Rows
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
@@ -58,7 +58,7 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     
-    // MARK: - Tableview Delegate Method - Managing Selections
+    // MARK: - Table View Delegate Method - Managing Selections
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController

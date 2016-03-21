@@ -40,7 +40,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     var memeIndex: Int!
     
     
-    // MARK: - Lifecycle
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +123,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     
-    // MARK: - Textfield Delegate Methods
+    // MARK: - Text Field Delegate Methods
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField.text == "TOP" || textField.text == "BOTTOM" {

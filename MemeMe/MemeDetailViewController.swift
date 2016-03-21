@@ -20,7 +20,7 @@ class MemeDetailViewController: UIViewController {
     }
     
     
-    // MARK: - Lifecycle
+    // MARK: - Life Cycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
