@@ -1,5 +1,7 @@
 # MemeMe
 
+CURRENTLY UNDERGOING REVISIONS TO MAKE SWIFT 3+ COMPLIANT!
+
 ## Overview
 
 - Multi-view Swift app that takes pictures and overlays text to make memes that are shared via social media or email and displayed in a table or collection view
